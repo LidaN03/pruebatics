@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>BBVA - Verificación de cuenta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    .login-box img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    .login-box input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .login-box button {
+      background: #004481;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .login-box button:hover {
+      background: #003366;
+    }
+    .warning {
+      margin-top: 20px;
+      font-size: 14px;
+      color: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+   <img src="logo-bbva.png" alt="BBVA Logo">
+    <h3>Verificación de cuenta</h3>
+    <input type="text" placeholder="Usuario" id="user">
+    <input type="password" placeholder="Contraseña" id="pass">
+    <button onclick="showWarning()">Ingresar</button>
+    <p class="warning" id="warning-msg">
+      ⚠️ Esta es una simulación educativa. <br>
+      Nunca ingreses tus datos en sitios sospechosos.
+    </p>
+  </div>
+
+  <script>
+    function showWarning() {
+      document.getElementById("warning-msg").style.display = "block";
+    }
+  </script>
+</body>
+</html>
