@@ -1,73 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>BBVA - Verificación de cuenta</title>
+  <meta charset="utf-8">
+  <title>SIMULACIÓN EDUCATIVA - BBVA (Prueba)</title>
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    :root {
+      --blue:#004481;
+      --bg:#f4f6f9;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
     }
-    .login-box {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 300px;
-      text-align: center;
-    }
-    .login-box img {
-      width: 120px;
-      margin-bottom: 20px;
-    }
-    .login-box input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .login-box button {
-      background: #004481;
-      color: white;
-      border: none;
-      padding: 12px;
+    .page {
       width: 100%;
-      border-radius: 6px;
-      cursor: pointer;
+      max-width:420px;
+      padding: 18px;
+      box-sizing:border-box;
     }
-    .login-box button:hover {
-      background: #003366;
+    .sim-banner {
+      background:#fff3cd;
+      color:#856404;
+      border:1px solid #ffeeba;
+      padding:12px 14px;
+      border-radius:8px;
+      text-align:center;
+      font-weight:700;
+      margin-bottom:16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
+    .note {
+      font-size:13px;
+      color:#333;
+      margin:8px 0 18px;
+      text-align:center;
+    }
+    .login-card {
+      background:#fff;
+      border-radius:12px;
+      padding:26px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      text-align:center;
+    }
+    .login-card img {
+      width:110px;
+      display:block;
+      margin:0 auto 12px;
+    }
+    h3 { margin:0 0 12px; font-size:20px; color:#111; }
+    input {
+      width:calc(100% - 18px);
+      padding:12px 8px;
+      margin:10px 0;
+      border-radius:8px;
+      border:1px solid #d1d5db;
+      font-size:15px;
+      box-sizing:border-box;
+    }
+    .btn {
+      width:100%;
+      padding:12px;
+      background:var(--blue);
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      margin-top:8px;
+    }
+    .btn:active{ transform:translateY(1px); }
     .warning {
-      margin-top: 20px;
-      font-size: 14px;
-      color: red;
-      display: none;
+      color:#c62828;
+      font-weight:700;
+      margin-top:14px;
+      display:none;
+    }
+    footer {
+      font-size:12px;
+      color:#666;
+      margin-top:14px;
+      text-align:center;
+    }
+
+    /* layout for small screens */
+    @media (max-width:420px){
+      .page { padding:10px; }
+      .login-card { padding:18px; }
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-   <img src="logo-bbva.png" alt="BBVA Logo">
-    <h3>Verificación de cuenta</h3>
-    <input type="text" placeholder="Usuario" id="user">
-    <input type="password" placeholder="Contraseña" id="pass">
-    <button onclick="showWarning()">Ingresar</button>
-    <p class="warning" id="warning-msg">
-      ⚠️ Esta es una simulación educativa. <br>
-      Nunca ingreses tus datos en sitios sospechosos.
-    </p>
+  <div class="page" role="main">
+    <div class="sim-banner" role="note" aria-live="polite">
+      ⚠️ SIMULACIÓN EDUCATIVA — PÁGINA DE PRUEBA. NO INGRESE DATOS REALES. ⚠️
+    </div>
+
+    <div class="login-card" aria-labelledby="title">
+      <img src="logo-bbva.png" alt="BBVA Logo (simulado)">
+      <h3 id="title">Verificación de cuenta</h3>
+
+      <div class="note">Esta página forma parte de una simulación para una práctica universitaria. Nunca introduzcas credenciales reales.</div>
+
+      <input id="user" type="text" placeholder="Usuario (ej: correo@ejemplo.com)" autocomplete="off" />
+      <input id="pass" type="password" placeholder="Contraseña" autocomplete="off" />
+
+      <button class="btn" onclick="showWarning()">Ingresar</button>
+
+      <div class="warning" id="warning">⚠️ ESTA ES UNA SIMULACIÓN EDUCATIVA. NUNCA INGRESES TUS DATOS REALES. La información no se guarda ni se envía.</div>
+
+      <footer>
+        Proyecto educativo — Simulación de phishing (no funcional). &nbsp;|&nbsp; Universidad / Curso
+      </footer>
+    </div>
   </div>
 
   <script>
-    function showWarning() {
-      document.getElementById("warning-msg").style.display = "block";
+    function showWarning(){
+      var w = document.getElementById('warning');
+      w.style.display = 'block';
+      // Intencionalmente NO enviamos datos a servidor. Aquí podrías mostrar una explicación adicional.
+      // Limpia los campos para enfatizar que no guardamos nada:
+      document.getElementById('user').value = '';
+      document.getElementById('pass').value = '';
+      // Si quieres, despliega un modal o redirige a una página con la lección aprendida:
+      setTimeout(function(){
+        alert('Esta es una simulación educativa. No ingreses credenciales reales en sitios desconocidos.');
+      }, 200);
     }
   </script>
 </body>
 </html>
+
